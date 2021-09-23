@@ -3,7 +3,7 @@ A utility for tagging files, and being able to look them up by their tags. Based
 
 ## Why?
 
-I spent a while looking for a tagging solution that would work on MacOS. There are several high quality solutions out there for Windows, and even Linux, such as:
+[Fie tagging is a great idea](https://www.nayuki.io/page/designing-better-file-organization-around-tags-not-hierarchies). It lets us represent metadata about files that can be awkward or impossible to express in a hierarchal way. I spent a while looking for a tagging solution that would work on MacOS. There are several high quality solutions out there for Windows, and even Linux, such as:
 - https://tmsu.org
 - https://www.tagsistant.net
 
