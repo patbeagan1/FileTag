@@ -3,7 +3,7 @@ A utility for tagging files, and being able to look them up by their tags. Based
 
 ## Why?
 
-[Fie tagging is a great idea](https://www.nayuki.io/page/designing-better-file-organization-around-tags-not-hierarchies). It lets us represent metadata about files that can be awkward or impossible to express in a hierarchal way. I spent a while looking for a tagging solution that would work on MacOS. There are several high quality solutions out there for Windows, and even Linux, such as:
+[File tagging is a great idea](https://www.nayuki.io/page/designing-better-file-organization-around-tags-not-hierarchies). It lets us represent metadata about files that can be awkward or impossible to express in a hierarchal way. I spent a while looking for a tagging solution that would work on MacOS. There are several high quality solutions out there for Windows, and even Linux, such as:
 - https://tmsu.org
 - https://www.tagsistant.net
 
@@ -27,38 +27,38 @@ From that point on, metadata can be linked back to the hash of the file. There i
 
 ## How do I use it? 
 
-1. Adding the tag "y" to the file "tagger.py" within the tagspace "TEST"
-```
-% ./tagger.py -s TEST tagas y tagger.py
-symlink created for: /Users/pbeagan/Downloads/FileTag/tagger.py
+1. Adding the tag "homework" to the file `filetag.py` within the tagspace "TEST"
+```shell
+% ./filetag.py -s TEST tagas homework filetag.py
+symlink created for: /Users/pbeagan/Downloads/FileTag/filetag.py
 symlink created for: /Users/pbeagan/.index/id/7f405d781e6f3ab1bfdb4596b7827341e36e5573a8ba51ecd9bf187f3223668e
 ```
-2. Verifying that the "TEST" tagspace contains the "y" tag
+2. Verifying that the "TEST" tagspace contains the "homework" tag
+```shell
+% ./filetag.py -s TEST taglist
+homework
 ```
-% ./tagger.py -s TEST taglist
-y
+3. Finding a list of files within the "TEST" tagspace that are tagged with "homework". See that the ID matches!
 ```
-3. Finding a list of files within the "TEST" tagspace that are tagged with "y". See that the ID matches!
-```
-% ./tagger.py -s TEST match y
+% ./filetag.py -s TEST match homework
 /Users/pbeagan/.index/id/7f405d781e6f3ab1bfdb4596b7827341e36e5573a8ba51ecd9bf187f3223668e
 ```
 You can now browse to `~/.index/tags_TEST` to preview any of the files that were tagged in this way, regardless of which disk/ filepath they are stored on.
 
 You will probably want to create an alias for your default tagspace - something like 
 ```
-alias filetag="~/FileTag/tagger.py -s default"
+alias filetag="~/FileTag/filetag.py -s default"
 ```
 
 ## Could I have more details?
 
 ```
-% ./tagger.py
+% ./filetag.py
 
     This util sets up an index of tagged files at ~/.index/id.
     It uses symlinks based on the sha256 hash of an object to make sure the tags are accurate.
 
-    tagger.py [-s TAGSPACE] SUBCMD X [...]
+    filetag.py [-s TAGSPACE] SUBCMD X [...]
     Supported subcommands:
 
         help|-h
@@ -87,7 +87,7 @@ alias filetag="~/FileTag/tagger.py -s default"
 
 ### Can you share some useful one liners? 
 
-Check for files that are tagged with "mytag", with in the "default" tagspace. Then, report on whether those files are available (unbroken symlinks)
+Check for files that are tagged with "mytag", within the "default" tagspace. Then, report on whether those files are available (unbroken symlinks)
 ```sh
-./tagger.py -s default match <mytag> | xargs ./tagger.py base
+./filetag.py -s default match <mytag> | xargs ./filetag.py base
 ```
