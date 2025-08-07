@@ -1,0 +1,8 @@
+name: FileTag
+description: A util for tagging files
+language: python
+tags:
+- cli
+release_repo: ../../external_repos/FileTag
+release_branch: develop
+has_release_script: false
